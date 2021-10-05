@@ -4,8 +4,8 @@
 
 -- Variables
 local py1 = "test"
-local py2 = ""
-local py3 = ""
+local py2 = "testgui"
+local py3 = "testgui2"
 local py4 = ""
 local py5 = ""
 local py6 = ""
