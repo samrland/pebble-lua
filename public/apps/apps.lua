@@ -49,6 +49,7 @@ print("[18] " .. app18)
 print("[19] " .. app19)
 print("[20] Go back")
 print("")
+-- get input, then clear console and run app
 local opt = io.read("*n")
 if (opt == 1) then
 	os.execute("clear")
@@ -115,3 +116,103 @@ else
 	io.read("*l")
 	os.execute("lua public/apps/apps.lua")
 end
+
+-- pebble Module
+local pebble = {}
+
+-- open home
+function pebble.home()
+	os.execute("clear")
+	os.execute("lua root/main/pebble.lua")
+end
+
+-- open specific page
+function pebble.page(page)
+	os.execute("clear")
+	if (page == "home") then
+		os.execute("lua root/main/pebble.lua")
+	elseif (page == "help") then
+		os.execute("lua root/main/help.lua")
+	elseif (page == "settings") then
+		os.execute("lua root/main/settings.lua")
+	elseif (page == "power") then
+		os.execute("lua root/main/power.lua")
+	elseif (page == "apps") then
+		os.execute("lua public/apps/apps.lua")
+	else
+		print("Oops!")
+	end
+end
+
+-- make pebble list
+function pebble.list(num, ent1, ent2, ent3, ent4, ent5, ent6, ent7, ent8, ent9, ent10)
+	if (num == 1) then
+		print("[1] " .. ent1)
+	elseif (num == 2) then
+		print("[1] " .. ent1)
+		print("[2] " .. ent2)
+	elseif (num == 3) then
+		print("[1] " .. ent1)
+		print("[2] " .. ent2)
+		print("[3] " .. ent3)
+	elseif (num == 4) then
+		print("[1] " .. ent1)
+		print("[2] " .. ent2)
+		print("[3] " .. ent3)
+		print("[4] " .. ent4)
+	elseif (num == 5) then
+		print("[1] " .. ent1)
+		print("[2] " .. ent2)
+		print("[3] " .. ent3)
+		print("[4] " .. ent4)
+		print("[5] " .. ent5)
+	elseif (num == 6) then
+		print("[1] " .. ent1)
+		print("[2] " .. ent2)
+		print("[3] " .. ent3)
+		print("[4] " .. ent4)
+		print("[5] " .. ent5)
+		print("[6] " .. ent6)
+	elseif (num == 7) then
+		print("[1] " .. ent1)
+		print("[2] " .. ent2)
+		print("[3] " .. ent3)
+		print("[4] " .. ent4)
+		print("[5] " .. ent5)
+		print("[6] " .. ent6)
+		print("[7] " .. ent7)
+	elseif (num == 8) then
+		print("[1] " .. ent1)
+		print("[2] " .. ent2)
+		print("[3] " .. ent3)
+		print("[4] " .. ent4)
+		print("[5] " .. ent5)
+		print("[6] " .. ent6)
+		print("[7] " .. ent7)
+		print("[8] " .. ent8)
+	elseif (num == 9) then
+		print("[1] " .. ent1)
+		print("[2] " .. ent2)
+		print("[3] " .. ent3)
+		print("[4] " .. ent4)
+		print("[5] " .. ent5)
+		print("[6] " .. ent6)
+		print("[7] " .. ent7)
+		print("[8] " .. ent8)
+	elseif (num == 10) then
+		print("[1] " .. ent1)
+		print("[2] " .. ent2)
+		print("[3] " .. ent3)
+		print("[4] " .. ent4)
+		print("[5] " .. ent5)
+		print("[6] " .. ent6)
+		print("[7] " .. ent7)
+		print("[8] " .. ent8)
+		print("[9] " .. ent9)
+		print("[10] " .. ent10)
+	else
+		print("Oops!")
+	end
+end
+
+return pebble
