@@ -1,11 +1,10 @@
 -- pebble power
 -- samrcode on GitHub and repl.it
 os.execute("clear")
-print("== power ==")
-print("")
-print("[1] Shutdown")
-print("[2] Restart")
-print("[3] Go back")
+print("[32;7m== power ==[0m\n")
+print("[34m[1] [4mShutdown[0m")
+print("[34m[2] [4mRestart[0m")
+print("[31m[3] [4mGo back[0m\n")
 local opt = io.read("*n")
 if (opt == 1) then
 	os.execute("lua root/scripts/shutdown.lua")
@@ -14,8 +13,8 @@ elseif (opt == 2) then
 elseif (opt == 3) then
 	os.execute("lua root/main/pebble.lua")
 else
-	print(opt .. " is not a valid option.")
-	print("[continue]")
+	print("[31m" .. opt .. " is not a valid option.[0m")
+	print("[36m[continue][0m")
 	io.read("*l")
 	os.execute("lua root/main/power.lua")
 end
