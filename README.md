@@ -8,7 +8,10 @@ Pebble is a fake operating system that can run apps created by the community.
 
 ## how to install apps
 
-You may download an app from the internet. After checking to see that the code in the app is safe, install the app onto Pebble by copying it to `public/apps`. If the app is a Python app, copy the app into `public/apps/pyapps`.
+You may download an app from the Get Apps feature.
+The Get Apps feature is powered by the samrcode/pebble-app repository on GitHub.
+
+After you download the app, edit the variables at the top of apps.lua to contain the filenames of the apps you would like to use.
 
 ## how to make apps
 
@@ -24,7 +27,7 @@ NOTE: File locations don't exactly work as expected. It will load from the top d
 
 ### python
 
-Python apps aren't default in Pebble. They have to be loaded using a different app named pySupport.
+Python apps aren't the default in Pebble. They have to be loaded using a different app named pySupport.
 
 Just write Python code, and it will run! The only thing you have to do is add `os.system("lua public/scripts/open.lua")` at the end of your code.
 
@@ -47,6 +50,8 @@ This function can be used to jump to a specific page of Pebble. Here are all the
 - settings
 - power
 - apps
+- getapp
+- latest
 
 Parameters: `page`. The `page` parameter is a string using one of the possible pages listed above.
 

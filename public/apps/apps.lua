@@ -136,6 +136,10 @@ function pebble.page(page)
 		os.execute("lua root/main/power.lua")
 	elseif (page == "apps") then
 		os.execute("lua public/apps/apps.lua")
+	elseif (page == "getapp") then
+		os.execute("lua root/main/getapp.lua")
+	elseif (page == "latest") then
+		os.execute("lua root/main/latest.lua")
 	else
 		print("[31mOops![0m")
 	end
