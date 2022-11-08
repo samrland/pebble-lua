@@ -1,0 +1,60 @@
+MAGIC CHARACTER: 
+Make sure to reset after styling.
+
+== Reset Code ==
+Reset: [0m
+
+---
+
+== Styles ==
+Bold: [1m
+Underline: [4m
+Inverse: [7m
+
+---
+
+== Normal Foreground Colours ==
+Black: [30m
+Red: [31m
+Green: [32m
+Yellow: [33m
+Blue: [34m
+Magenta: [35m
+Cyan: [36m
+White: [37m
+
+== Normal Background Colours ==
+Black: [40m
+Red: [41m
+Green: [42m
+Yellow: [43m
+Blue: [44m
+Magenta: [45m
+Cyan: [46m
+White: [47m
+
+---
+
+== Strong Foreground Colours ==
+Black: [90m
+Red: [91m
+Green: [92m
+Yellow: [93m
+Blue: [94m
+Magenta: [95m
+Cyan: [96m
+White: [97m
+
+== Strong Background Colours ==
+Black: [100m
+Red: [101m
+Green: [102m
+Yellow: [103m
+Blue: [104m
+Magenta: [105m
+Cyan: [106m
+White: [107m
+
+---
+
+ADAPTED FROM https://gist.githubusercontent.com/mlocati/fdabcaeb8071d5c75a2d51712db24011/raw/b710612d6320df7e146508094e84b92b34c77d48/win10colors.cmd

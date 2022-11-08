@@ -1,8 +1,9 @@
-function sleep(n)
-  os.execute("sleep " .. tonumber(n))
-end
+local pebble = require("PebbleFrame")
+
 print("Restarting... ")
-sleep(7)
+pebble.sleep(7)
+
 os.execute("clear")
-sleep(3)
+pebble.sleep(3)
+
 os.execute("lua root/main/pebble.lua")

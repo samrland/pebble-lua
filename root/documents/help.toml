@@ -1,0 +1,45 @@
+# This file is full of information for root/main/help.lua
+# Each page is stored as a different variable
+# All pages are here except for the continue tip, since it doesn't really count as a page
+
+# Syntax:
+# - Text will appear as text (of course)
+# - Notes, tips, and warnings are added in like this:
+## @-
+## This is an example note.
+## @*
+## This is a tip.
+## @!
+## THIS IS A WARNING.
+
+list = ["apps", "pif", "development"]
+
+[Pages]
+apps = '''
+One big feature of pebble is that you can have apps developed by people in the community!
+You can get apps using the "Get Apps" option on the home screen, which lets you type in the name of the app you would like to install.
+Once you do this, your newly installed app will automatically be added to your app list.
+@-
+You (currently) can't uninstall apps after you've installed them.
+@*
+You can easily find all of the best apps in the Get Apps menu.
+'''
+
+pif = '''
+At the very root of the pebble system, you will find a file called "pebble.toml".
+This file is your Pebble Information File (PIF).
+Your PIF contains important system information, your list of apps, and your preferences.
+Basically anything done by the pebble system is stored inside of your PIF.
+@!
+DO NOT delete your PIF or install any apps that can remove your PIF. Always be wary of any app you install.
+'''
+
+development = '''
+Want to develop apps for pebble? It is very easy to do so.
+Using PebbleFrame, a module provided to you by pebble, you can easily make an app that fits right in with the rest of pebble.
+When you're ready to share your app with the world, just open a pull request on github:samrpf/pebble-app and add your app so that others can install it!
+It's that simple!
+Apps currently only support Lua, but we have plans to start supporting other programming languages as well.
+@-
+Make sure to use the PebbleFrame.home() function to return the user to the home screen.
+'''

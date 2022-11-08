@@ -36,4 +36,4 @@ function f.bgred(message)
 	return ""
 end
 
-return colour
+return f

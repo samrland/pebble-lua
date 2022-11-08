@@ -1,5 +1,9 @@
 # pebble
 
+> Note: This file hasn't been updated in a long time.
+>
+> I was very bad at writing Lua back when this was written.
+
 A fake OS written in Lua.
 
 ## what is pebble
@@ -9,7 +13,7 @@ Pebble is a fake operating system that can run apps created by the community.
 ## how to install apps
 
 You may download an app from the Get Apps feature.
-The Get Apps feature is powered by the samrcode/pebble-app repository on GitHub.
+The Get Apps feature is powered by the samrpf/pebble-app repository on GitHub.
 
 After you download the app, edit the variables at the top of apps.lua to contain the filenames of the apps you would like to use.
 

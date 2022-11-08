@@ -1,11 +1,11 @@
-function sleep(n)
-  os.execute("sleep " .. tonumber(n))
-end
+local pebble = require("PebbleFrame")
+
 print("Shutting down... ")
-sleep(5)
+pebble.sleep(5)
 os.execute("clear")
 print("It is now safe to turn off your computer.")
-sleep(5)
-print("[continue]")
-io.read("*l")
+
+pebble.sleep(5)
+pebble.ui.cont()
+io.read("l")
 os.execute("lua root/main/pebble.lua")

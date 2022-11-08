@@ -1,0 +1,28 @@
+# Pebble Information File
+# DO NOT DELETE. THIS FILE CONTAINS IMPORTANT INFORMATION.
+[Pebble]
+    [Pebble.SysFiles]
+    home = "root/main/pebble.lua"
+    apps = "public/apps/apps.lua"
+    pref = "root/main/preferences.lua"
+    
+    [Pebble.Dev]
+    modules = "public/modules"
+    pubscript = "public/scripts"
+    prvscript = "root/scripts"
+
+    [Pebble.UserDirs]
+    apps = "public/apps"
+    documents = "public/documents"
+    trash = "public/trash"
+
+    [Pebble.Apps]
+    apps = ["calc", "spinner"] # pySupport is currently under work, and I'm planning to remove pySupport entirely and take things in a different direction
+    pyapps = ["test", "testgui", "testgui2"]
+
+    [Pebble.Preferences]
+    username = "User"
+
+    # # Reason for commenting is because this feature is not yet implemented.
+    # [Pebble.Home]
+    # options = ["Apps", "Get Apps", "Help", "Preferences", "Shutdown"]
