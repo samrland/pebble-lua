@@ -1,24 +1,24 @@
 -- pebble
 -- samrpf on GitHub
 
--- PebbleFrame module
-PebbleFrame = {}
+-- PKit module
+PKit = {}
 
 -- Reset code
-PebbleFrame.resetc = "[0m"
+PKit.resetc = "[0m"
 
 -- Title Mix
-PebbleFrame.titlemix = "32;7m"
+PKit.titlemix = "32;7m"
 
 -- Styles
-PebbleFrame.stl = {
+PKit.stl = {
     bold = "[1m";
     uline = "[4m";
     inverse = "[7m";
 }
 
 -- Foreground colours
-PebbleFrame.c = {
+PKit.c = {
     black = "[30m";
     red = "31m";
     green = "[32m";
@@ -42,7 +42,7 @@ PebbleFrame.c = {
 }
 
 -- Background colours
-PebbleFrame.bg = {
+PKit.bg = {
     black = "[40m";
     red = "[41m";
     green = "[42m";
@@ -66,37 +66,37 @@ PebbleFrame.bg = {
 }
 
 -- user interface functions
-PebbleFrame.ui = {
+PKit.ui = {
     -- title bars: green; inverse
     title = function(titletext)
-        print(PebbleFrame.titlemix .. "== " .. titletext .. " ==" .. PebbleFrame.resetc)
+        print(PKit.titlemix .. "== " .. titletext .. " ==" .. PKit.resetc)
         -- NOTE the Pebble Interface usually adds an extra newline after title bars
     end;
 
     -- notes: yellow
     notet = function(notetext)
-        print(PebbleFrame.c.yellow .. notetext .. PebbleFrame.resetc)
+        print(PKit.c.yellow .. notetext .. PKit.resetc)
     end;
 
     -- tips: magenta
     tipt = function(tiptext)
-        print(PebbleFrame.c.magenta .. tiptext .. PebbleFrame.resetc)
+        print(PKit.c.magenta .. tiptext .. PKit.resetc)
     end;
 
     -- [continue] text; cyan
     cont = function()
-        print(PebbleFrame.c.cyan .. "[continue]" .. PebbleFrame.resetc)
+        print(PKit.c.cyan .. "[continue]" .. PKit.resetc)
     end;
 }
 
 -- home function
-function PebbleFrame.home()
+function PKit.home()
     os.execute("clear")
     os.execute("lua root/main/pebble.lua")
 end
 
 -- table container check function
-function PebbleFrame.tablecontains(table, element)
+function PKit.tablecontains(table, element)
     for _, value in pairs(table) do
         if value == element then
             return true
@@ -106,8 +106,8 @@ function PebbleFrame.tablecontains(table, element)
 end
 
 -- sleep function
-function PebbleFrame.sleep(n)
+function PKit.sleep(n)
     os.execute("sleep " .. tostring(n))
 end
 
-return PebbleFrame
+return PKit

@@ -1,7 +1,7 @@
 -- pebble get
 -- samrpf on GitHub
 os.execute("clear")
-local pebble = require("PebbleFrame")
+local pebble = require("PKit")
 print("[32;7m== get apps ==[0m")
 
 -- get index file
@@ -39,7 +39,7 @@ if pebble.tablecontains(AppIX["AvaiableApps"], appopt) then
 	-- if option is an app
 	-- curl
 	local url = "https://raw.githubusercontent.com/samrcode/pebble-app/main/" .. appopt .. "/"
-	os.execute("cd public/apps; curl " .. url .. " -O; cd ../..")
+	os.execute("cd public/apps; curl " .. url .. " -O -s; cd ../..")
 	-- say done
 	pebble.ui.tipt("Done!")
 	pebble.ui.cont()

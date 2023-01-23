@@ -1,12 +1,12 @@
 -- pebble settings/name
 print("===")
-local unamefread = io.open("username.txt", "r")
-local currentuname = unamef:read("*l")
+local unamef = io.open("username.txt", "r")
+local currentuname = unamef:read("l")
 print("Your username is currently: " .. currentuname)
 print("Would you like to change it?")
 print("[1] Yes")
 print("[2] No")
-unamefread:close()
+unamef:close()
 local opt = io.read("*n")
 if (opt == 1) then
 	local unamefwrite = io.open("username.txt", "w+")

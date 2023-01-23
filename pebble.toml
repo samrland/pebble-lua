@@ -1,6 +1,8 @@
 # Pebble Information File
 # DO NOT DELETE. THIS FILE CONTAINS IMPORTANT INFORMATION.
 [Pebble]
+version = "2.0.0"
+
     [Pebble.SysFiles]
     home = "root/main/pebble.lua"
     apps = "public/apps/apps.lua"
