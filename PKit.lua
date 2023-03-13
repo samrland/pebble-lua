@@ -22,7 +22,7 @@ PKit.fg = {
     black = "[30m";
     red = "[31m";
     green = "[32m";
-    yellow = "33m";
+    yellow = "[33m";
     blue = "[34m";
     magenta = "[35m";
     cyan = "[36m";
@@ -159,6 +159,10 @@ function PKit.listiteg(listnum, listname)
     io.write(PKit.stl.uline .. listname)
     io.write(PKit.resetc)
     io.write("\n\n")
+end
+
+function PKit.extern(module)
+    return require("public.modules." .. module)
 end
 
 return PKit

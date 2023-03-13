@@ -4,7 +4,7 @@ local PKit = require("PKit")
 
 PKit.clear()
 
-PKit.title("settings")
+PKit.ui.title("settings")
 print()
 
 PKit.listitem(1, "App selection")
