@@ -1,15 +1,21 @@
 -- pebble home
--- samrpf on GitHub
-os.execute("clear")
+-- copyright (c) 2023 samrland. see LICENSE for more information.
+local PKit = require('PKit')
+
+PKit.clear()
 
 -- show options
-print("[32;7m== pebble ==[0m\n")
-print("[34m[1] [4mApps[0m")
-print("[34m[2] [4mGet Apps[0m")
-print("[34m[3] [4mHelp[0m")
-print("[34m[4] [4mPreferences[0m")
--- print("[34m[5] [4mLatest[0m")
-print("[34m[5] [4mShutdown[0m\n")
+PKit.ui.title("pebble")
+print()
+
+PKit.listitem(1, "Apps")
+PKit.listitem(2, "Get Apps")
+PKit.listitem(3, "Help")
+PKit.listitem(4, "Preferences")
+-- PKit.listitem(5, "Latest")
+PKit.listitem(5, "Shutdown")
+print()
+
 -- get input
 local opt = io.read("*n")
 -- check against options
@@ -28,8 +34,8 @@ elseif (opt == 5) then
 elseif (opt == 5) then
 	os.execute("lua root/main/power.lua")
 else
-	print("[31m" .. opt .. " is not a valid option.[0m")
-	print("[36m[continue][0m")
+	PKit.printf(PKit.fg.red, opt .. " is not a valid option.")
+	PKit.ui.cont()
 	io.read("*l")
-	os.execute("lua root/main/pebble.lua")
+	PKit.home()
 end

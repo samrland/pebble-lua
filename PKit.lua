@@ -1,5 +1,5 @@
 -- pebble
--- samrpf on GitHub
+-- copyright (c) 2023 samrland. see LICENSE for more information.
 
 -- PKit module
 PKit = {}
@@ -8,7 +8,7 @@ PKit = {}
 PKit.resetc = "[0m"
 
 -- Title Mix
-PKit.titlemix = "32;7m"
+PKit.titlemix = "[32;7m"
 
 -- Styles
 PKit.stl = {
@@ -18,9 +18,9 @@ PKit.stl = {
 }
 
 -- Foreground colours
-PKit.c = {
+PKit.fg = {
     black = "[30m";
-    red = "31m";
+    red = "[31m";
     green = "[32m";
     yellow = "33m";
     blue = "[34m";
@@ -75,23 +75,53 @@ PKit.ui = {
 
     -- notes: yellow
     notet = function(notetext)
-        print(PKit.c.yellow .. notetext .. PKit.resetc)
+        print(PKit.fg.yellow .. notetext .. PKit.resetc)
     end;
 
     -- tips: magenta
     tipt = function(tiptext)
-        print(PKit.c.magenta .. tiptext .. PKit.resetc)
+        print(PKit.fg.magenta .. tiptext .. PKit.resetc)
     end;
 
     -- [continue] text; cyan
     cont = function()
-        print(PKit.c.cyan .. "[continue]" .. PKit.resetc)
+        print(PKit.fg.cyan .. "[continue]" .. PKit.resetc)
+        -- NOTE Pebble Interface requires user to hit [enter] before continuing
     end;
 }
 
+-- formatted print function
+function PKit.printf(format, string)
+    io.write(format)
+    io.write(string)
+    io.write(PKit.resetc)
+    io.write('\n')
+end
+
+-- check os function
+function PKit.getos()
+    local pathsep = package.config:sub(1, 1)
+    if pathsep == '/' then
+        return 'unix'
+    elseif pathsep == '\\' then
+        return 'msdos'
+    else
+        return 'unknown'
+    end
+end
+
+-- clear function
+function PKit.clear()
+    if PKit.getos() == "msdos" then
+        os.execute("cls")
+    else
+        os.execute("clear")
+    end
+end
+
 -- home function
 function PKit.home()
-    os.execute("clear")
+    PKit.clear()
     os.execute("lua root/main/pebble.lua")
 end
 
@@ -107,7 +137,28 @@ end
 
 -- sleep function
 function PKit.sleep(n)
-    os.execute("sleep " .. tostring(n))
+    if PKit.getos() == "msdos" then
+        os.execute("timeout /t " .. tostring(n) .. " /nobreak > nul")
+    else
+        os.execute("sleep " .. tostring(n))
+    end
+end
+
+-- list item function
+function PKit.listitem(listnum, listname)
+    io.write(PKit.fg.blue)
+    io.write("[" .. tostring(listnum) .. "] ")
+    io.write(PKit.stl.uline .. listname)
+    io.write(PKit.resetc)
+    io.write("\n")
+end
+
+function PKit.listiteg(listnum, listname)
+    io.write(PKit.fg.red)
+    io.write("[" .. tostring(listnum) .. "] ")
+    io.write(PKit.stl.uline .. listname)
+    io.write(PKit.resetc)
+    io.write("\n\n")
 end
 
 return PKit

@@ -1,11 +1,8 @@
 # pebble
 
-> Note: This file hasn't been updated in a long time.
->
-> I was very bad at writing Lua back when this was written.
+A little operating environment written in Lua.
 
-A fake OS written in Lua.
-
+<!--
 ## what is pebble
 
 Pebble is a fake operating system that can run apps created by the community.
@@ -66,3 +63,4 @@ This function can be used to make a Pebble styled list. This can be used to make
 Parameters: `num`, `ent` 1 ~ 10. `num` is an integer used to specify the number of entries. The `ent` string parameters are entries. These are the names of the entries.
 
 NOTE: You will have to handle the input and `if` statements in your own code.
+-->

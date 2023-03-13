@@ -36,10 +36,10 @@ DO NOT delete your PIF or install any apps that can remove your PIF. Always be w
 
 development = '''
 Want to develop apps for pebble? It is very easy to do so.
-Using PebbleFrame, a module provided to you by pebble, you can easily make an app that fits right in with the rest of pebble.
-When you're ready to share your app with the world, just open a pull request on github:samrpf/pebble-app and add your app so that others can install it!
+Using PKit, a module provided to you by pebble, you can easily make an app that fits right in with the rest of pebble.
+When you're ready to share your app with the world, just open a pull request on github:samrland/pebble-app and add your app so that others can install it!
 It's that simple!
 Apps currently only support Lua, but we have plans to start supporting other programming languages as well.
 @-
-Make sure to use the PebbleFrame.home() function to return the user to the home screen.
+Make sure to use the PKit.home() function to return the user to the home screen.
 '''

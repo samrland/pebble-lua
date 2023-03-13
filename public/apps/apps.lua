@@ -1,7 +1,9 @@
 -- pebble apps
--- samrpf on GitHub
-os.execute("clear")
-print("[32;7m== apps ==[0m\n")
+-- copyright (c) 2023 samrland. see LICENSE for more information.
+local PKit = require("PKit")
+
+PKit.clear()
+PKit.ui.title("apps")
 
 -- parse PIF
 local toml = require("toml")
@@ -11,10 +13,12 @@ PIFinst:close()
 
 -- print all options
 for i, name in ipairs(PIF["Pebble"]["Apps"]["apps"]) do
-	print("[34m[" .. i .. "] [4m" .. name .. "[0m")
+	-- print("[34m[" .. i .. "] [4m" .. name .. "[0m")
+	PKit.listitem(i, name)
 end
 -- Show exit option
-print("[31m[" .. (#PIF["Pebble"]["Apps"]["apps"] + 1) .. "] [4mGo back[0m\n")
+-- print("[31m[" .. (#PIF["Pebble"]["Apps"]["apps"] + 1) .. "] [4mGo back[0m\n")
+PKit.listiteg(#PIF["Pebble"]["Apps"]["apps"] + 1, "Go back")
 
 -- get input
 local opt = io.read("*n")
@@ -34,8 +38,8 @@ elseif opt == (#PIF["Pebble"]["Apps"]["apps"] + 1) then
 	os.execute("lua root/main/pebble.lua")
 else
 	-- bad option
-	print("[31m" .. opt .. " is not a valid option.[0m")
-	print("[36m[continue][0m")
+	PKit.printf(PKit.fg.red, opt .. " is not a valid option.")
+	PKit.cont()
 	io.read("*l")
 	os.execute("lua public/apps/apps.lua")
 end
@@ -45,15 +49,14 @@ local pebble = {}
 
 -- open home
 function pebble.home()
-	os.execute("clear")
-	os.execute("lua root/main/pebble.lua")
+	PKit.home()
 end
 
 -- open specific page
 function pebble.page(page)
-	os.execute("clear")
+	PKit.clear()
 	if (page == "home") then
-		os.execute("lua root/main/pebble.lua")
+		PKit.home()
 	elseif (page == "help") then
 		os.execute("lua root/main/help.lua")
 	elseif (page == "settings") then
@@ -67,7 +70,7 @@ function pebble.page(page)
 	elseif (page == "latest") then
 		os.execute("lua root/main/latest.lua")
 	else
-		print("[31mOops![0m")
+		PKit.printf(PKit.fg.red, "Oops!")
 	end
 end
 
@@ -139,7 +142,7 @@ function pebble.list(num, ent1, ent2, ent3, ent4, ent5, ent6, ent7, ent8, ent9, 
 		print("[9] " .. ent9)
 		print("[10] " .. ent10)
 	else
-		print("[31mOops![0m")
+		PKit.printf(PKit.fg.red, "Oops!")
 	end
 end
 

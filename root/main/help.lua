@@ -1,6 +1,6 @@
 -- pebble help
--- samrpf on GitHub
-local pebble = require("PebbleFrame")
+-- copyright (c) 2023 samrland. see LICENSE for more information.
+local pebble = require("PKit")
 
 os.execute("clear")
 pebble.ui.title("help")

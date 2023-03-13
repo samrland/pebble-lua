@@ -1,5 +1,5 @@
 -- pebble boot
--- samrpf on GitHub
+-- copyright (c) 2023 samrland. see LICENSE for more information.
 
 -- check PIF exists
 -- if it does, continue to pebble

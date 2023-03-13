@@ -1,6 +1,6 @@
 -- pebble original app
 -- Python Support for pebble
--- by samrcode on GitHub and repl.it
+-- copyright (c) 2023 samrland. see LICENSE for more information.
 
 -- Variables
 local py1 = "test"

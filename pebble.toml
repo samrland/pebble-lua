@@ -25,6 +25,9 @@ version = "2.0.0"
     [Pebble.Preferences]
     username = "User"
 
-    # # Reason for commenting is because this feature is not yet implemented.
+    # Everything commented below is commented out due to not being a supported feature (yet)
+    # [Pebble.Repos]
+    # repos = ["https://github.com/samrland/pebble-app"]
+    # 
     # [Pebble.Home]
     # options = ["Apps", "Get Apps", "Help", "Preferences", "Shutdown"]
