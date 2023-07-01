@@ -4,9 +4,9 @@
 Toml = require("toml")
 PKit = require("PKit")
 
-getappservice = {}
+svgetapp = {}
 
-function getappservice.getindex(repositoryurl)
+function svgetapp.getindex(repositoryurl)
     local indexurl = repositoryurl .. "/appindex.toml"
     os.execute("curl " .. indexurl .. " -O -s")
 
@@ -20,8 +20,8 @@ function getappservice.getindex(repositoryurl)
     }
 end
 
-function getappservice.getappinfo(repositoryurl, name)
-    local appix = getappservice.getindex(repositoryurl).index
+function svgetapp.getappinfo(repositoryurl, name)
+    local appix = svgetapp.getindex(repositoryurl).index
     local appinfo = appix.AvailableApps[name]
     if appinfo ~= nil then
         return {
@@ -36,9 +36,10 @@ function getappservice.getappinfo(repositoryurl, name)
     end
 end
 
-function getappservice.addentrytopif(repositoryurl, name)
-    PIFinst = io.open("pebble.toml", "r+b")
+function svgetapp.addentrytopif(repositoryurl, name)
+    PIFinst = io.open("pebble.toml", "r")
 	_, PIF = pcall(Toml.decode, PIFinst:read("*a"))
+    PIFinst:close()
 
 	PIF["Pebble"]["Apps"]["apps"][(#PIF["Pebble"]["Apps"]["apps"]) + 1] = name
 
@@ -48,12 +49,12 @@ function getappservice.addentrytopif(repositoryurl, name)
 # DO NOT DELETE. THIS FILE CONTAINS IMPORTANT INFORMATION.
 ]]..TomlPIF..'\n'
 
+    PIFinst = io.open("pebble.toml", "w")
 	PIFinst:write(TomlPIF)
-
-	PIFinst:close()
+    PIFinst:close()
 end
 
-function getappservice.removeentryfrompif(repositoryurl, name)
+function svgetapp.removeentryfrompif(repositoryurl, name)
     PIFInst = io.open("pebble.toml", "r+")
     _, PIF = pcall(Toml.decode, PIFInst:read("*a"))
 
@@ -70,7 +71,7 @@ function getappservice.removeentryfrompif(repositoryurl, name)
     PIFinst:close()
 end
 
-function getappservice.installapp(repositoryurl, name)
+function svgetapp.installapp(repositoryurl, name)
     local outputdir = "public/apps/apps/" .. name
     os.execute("mkdir " .. outputdir)
 
@@ -84,7 +85,7 @@ function getappservice.installapp(repositoryurl, name)
 			os.execute("cd " .. outputdir .. "; curl " .. '"https://raw.githubusercontent.com/samrland/pebble-app/main/' .. name .. "/" .. requirement .. '" -s -O')
 		end
 
-		getappservice.addentrytopif(repositoryurl, name)
+		svgetapp.addentrytopif(repositoryurl, name)
 
         return 0
     else
@@ -92,18 +93,18 @@ function getappservice.installapp(repositoryurl, name)
     end
 end
 
-function getappservice.uninstallapp(repositoryurl, name)
+function svgetapp.uninstallapp(repositoryurl, name)
     local appdir = "public/apps/apps/" .. name
     if PKit.getos() == "msdos" then
         os.execute("rmdir " .. appdir)
     else
         os.execute("rm -r " .. appdir)
     end
-    getappservice.removeentryfrompif(repositoryurl, name)
+    svgetapp.removeentryfrompif(repositoryurl, name)
 end
 
-function getappservice.endscript(repositoryurl, name)
+function svgetapp.endscript(repositoryurl, name)
     os.execute("rm appindex.toml")
 end
 
-return getappservice
+return svgetapp

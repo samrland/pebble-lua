@@ -1,7 +1,7 @@
 -- pebble get
 -- copyright (c) 2023 samrland. see LICENSE for more information.
 local PKit = require("PKit")
-local getappservice = require("root.services.getappservice")
+local svgetapp = require("root.services.svgetapp")
 
 PKit.clear()
 PKit.ui.title("get apps")
@@ -11,7 +11,7 @@ print()
 Toml = require("toml")
 local repositoryurl = "https://raw.githubusercontent.com/samrland/pebble-app/main"
 
-AppIXTable = getappservice.getindex(repositoryurl)
+AppIXTable = svgetapp.getindex(repositoryurl)
 AppIX = AppIXTable.index
 
 -- check if succeeded
@@ -38,7 +38,7 @@ if name == "0" then
 	PKit.home()
 end
 
-local appinfotable = getappservice.getappinfo(repositoryurl, name)
+local appinfotable = svgetapp.getappinfo(repositoryurl, name)
 
 -- check option selected is an available application
 if appinfotable.success then
@@ -60,7 +60,7 @@ if appinfotable.success then
 		goto finish
 	end -- otherwise, continue with installation
 
-	local result = getappservice.installapp(repositoryurl, name)
+	local result = svgetapp.installapp(repositoryurl, name)
 	if result == 0 then
 		PKit.ui.tipt("Done!")
 		goto finish
@@ -82,5 +82,5 @@ end
 ::finish::
 PKit.ui.cont()
 io.read("l")
-getappservice.endscript(repositoryurl, name)
+svgetapp.endscript(repositoryurl, name)
 PKit.home()

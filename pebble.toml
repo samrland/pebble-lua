@@ -18,10 +18,9 @@ version = "2.0.0"
     [Pebble.Preferences]
     username = "User"
 
-    [Pebble.Repos]
-        [Pebble.Repos.pebbleapp]
-        url = "https://raw.githubusercontent.com/samrland/pebble-app/main"
-        description = "The official repository for pebble apps."
+    [Pebble.Repos.pebbleapp]
+    description = "The official repository for pebble apps."
+    url = "https://raw.githubusercontent.com/samrland/pebble-app/main"
 
     [Pebble.SysFiles]
     apps = "public/apps/apps.lua"

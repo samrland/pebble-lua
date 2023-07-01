@@ -4,6 +4,7 @@ local PKit = require("PKit")
 
 PKit.clear()
 PKit.ui.title("apps")
+io.write("\n")
 
 -- parse PIF
 Toml = require("toml")
