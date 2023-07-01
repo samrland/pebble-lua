@@ -5,7 +5,6 @@ version = "2.0.0"
 
     [Pebble.Apps]
     apps = [ "calc", "spinner" ]
-    pyapps = [ "test", "testgui", "testgui2" ]
 
     [Pebble.Dev]
     modules = "public/modules"
@@ -25,7 +24,7 @@ version = "2.0.0"
     [Pebble.SysFiles]
     apps = "public/apps/apps.lua"
     home = "root/main/home.lua"
-    pref = "root/main/preferences.lua"
+    pref = "root/main/settings.lua"
 
     [Pebble.UserDirs]
     apps = "public/apps"

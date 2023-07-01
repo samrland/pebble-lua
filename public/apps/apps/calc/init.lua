@@ -47,7 +47,7 @@ elseif (opt == 4) then
 	print("The sum is " .. z .. ".")
 	Fin = true
 elseif (opt == 5) then
-	os.execute("lua public/scripts/open.lua")
+	PKit.home()
 	Fin = false
 else
 	print(opt .. " is not a valid option.")

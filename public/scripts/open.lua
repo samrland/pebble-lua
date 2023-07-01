@@ -1,1 +1,0 @@
-os.execute("lua root/main/home.lua")
