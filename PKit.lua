@@ -141,6 +141,17 @@ function PKit.console()
     }
 end
 
+-- split string into table by character
+function PKit.split(inputstr, sep)
+    sep = sep or "%s"
+
+    local t = {}
+    for str in string.gmatch(inputstr, "([^" .. sep .. "]+)") do
+        table.insert(t, str)
+    end
+    return t
+end
+
 -- home function
 function PKit.home()
     PKit.clear()

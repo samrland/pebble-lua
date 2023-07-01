@@ -5,16 +5,15 @@ local PKit = require('PKit')
 PKit.clear()
 
 PKit.ui.title("pebble")
-print()
+io.write("\n")
 
 PKit.listitem(1, "Apps")
 PKit.listitem(2, "Get Apps")
 PKit.listitem(3, "Time")
 PKit.listitem(4, "Help")
 PKit.listitem(5, "Settings")
--- PKit.listitem(6, "Latest")
-PKit.listitem(6, "Shutdown")
-print()
+PKit.listitem(6, "Exit")
+io.write("\n")
 
 local opt = io.read("*n")
 
@@ -31,12 +30,8 @@ elseif (opt == 4) then
 	os.execute("lua root/main/help.lua")
 elseif (opt == 5) then
 	os.execute("lua root/main/settings.lua")
---[[
 elseif (opt == 6) then
-	os.execute("lua root/main/latest.lua")
-]]
-elseif (opt == 6) then
-	os.execute("lua root/main/power.lua")
+	os.execute("lua root/main/exit.lua")
 else
 	PKit.printf(PKit.fg.red, opt .. " is not a valid option.")
 	PKit.ui.cont()

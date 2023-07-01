@@ -1,45 +1,78 @@
 # This file is full of information for root/main/help.lua
 # Each page is stored as a different variable
-# All pages are here except for the continue tip, since it doesn't really count as a page
+# All help topics are stored here.
 
 # Syntax:
 # - Text will appear as text (of course)
-# - Notes, tips, and warnings are added in like this:
-## @-
-## This is an example note.
-## @*
-## This is a tip.
-## @!
-## THIS IS A WARNING.
+# - Notes, tips, warnings, and line breaks are added in like this:
+## @~ This is an example note.
+## @* This is a tip.
+## @! THIS IS A WARNING.
+## @@ This will be rendered as a line break.
 
-list = ["apps", "pif", "development"]
+# Future idea: have a way to link to other pages
+# Written like:
+## Here's a link!
+## @> development
+# Rendered like:
+## Here's a link!
+## => (a) Development
+# If a page has links, instead of just showing the normal "[continue]" text, it will show:
+## (There are links on this page. [Enter] to continue cycling, select a letter to follow the link.)
+# The user can then type in the letter assigned to the link. In this case, "a" will follow the link to the development page.
+
+list = [
+    "welcome", "ui", "getapp", "pif", "development"
+]
 
 [Pages]
-apps = '''
+
+[Pages.welcome]
+name = "Welcome"
+content = '''
+Welcome to pebble! pebble is an operating environment written in lua designed to give all of the things in a small package.
+'''
+
+[Pages.ui]
+name = "User Interface"
+content = '''
+When you first start pebble, you will be greeted with the pebble home screen.
+There are multiple options there to choose from. Type the number for the option you want, and then press enter to open it.
+Once you get into a menu, it should be pretty self-explanatory.
+'''
+
+[Pages.apps]
+name = "Built-in Apps"
+content = '''
+'''
+
+[Pages.getapp]
+name = "Getting Apps"
+content = '''
 One big feature of pebble is that you can have apps developed by people in the community!
 You can get apps using the "Get Apps" option on the home screen, which lets you type in the name of the app you would like to install.
 Once you do this, your newly installed app will automatically be added to your app list.
-@-
-You (currently) can't uninstall apps after you've installed them.
-@*
-You can easily find all of the best apps in the Get Apps menu.
+@~ You (currently) can't uninstall apps after you've installed them. This is being worked on.
+@* You can easily find all of the best apps in the Get Apps menu.
 '''
 
-pif = '''
+[Pages.pif]
+name = "Pebble Information File"
+content = '''
 At the very root of the pebble system, you will find a file called "pebble.toml".
 This file is your Pebble Information File (PIF).
 Your PIF contains important system information, your list of apps, and your preferences.
 Basically anything done by the pebble system is stored inside of your PIF.
-@!
-DO NOT delete your PIF or install any apps that can remove your PIF. Always be wary of any app you install.
+@! DO NOT delete your PIF or install any apps that can remove your PIF. Always be wary of any app you install.
 '''
 
-development = '''
+[Pages.development]
+name = "Development"
+content = '''
 Want to develop apps for pebble? It is very easy to do so.
 Using PKit, a module provided to you by pebble, you can easily make an app that fits right in with the rest of pebble.
 When you're ready to share your app with the world, just open a pull request on github:samrland/pebble-app and add your app so that others can install it!
 It's that simple!
 Apps currently only support Lua, but we have plans to start supporting other programming languages as well.
-@-
-Make sure to use the PKit.home() function to return the user to the home screen.
+@~ Make sure to use the PKit.home() function to return the user to the home screen.
 '''
