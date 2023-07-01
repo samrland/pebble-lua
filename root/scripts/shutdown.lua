@@ -1,4 +1,4 @@
-local pebble = require("PebbleFrame")
+local pebble = require("PKit")
 
 print("Shutting down... ")
 pebble.sleep(5)

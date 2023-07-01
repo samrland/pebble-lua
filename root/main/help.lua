@@ -75,4 +75,4 @@ print("Using this app, you can get support for your Python apps by just dragging
 print("Super simple!")
 print("[36m[continue][0m")
 io.read("*l")
-os.execute("lua root/main/home.lua")
+PKit.home()

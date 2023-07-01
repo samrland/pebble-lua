@@ -145,6 +145,7 @@ end
 function PKit.home()
     PKit.clear()
     os.execute("lua root/main/home.lua")
+    -- require("root.main.home")
 end
 
 -- table container check function
