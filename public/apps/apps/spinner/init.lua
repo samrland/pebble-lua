@@ -12,19 +12,19 @@ local i = 0
 while (i < spins) do
 	-- state 1
 	print("|")
-	PKit.sleep(0.3)
+	PKit.sleep(0.1)
 	PKit.clear()
 	-- state 2
 	print("/")
-	PKit.sleep(0.3)
+	PKit.sleep(0.1)
 	PKit.clear()
 	-- state 3
 	print("-")
-	PKit.sleep(0.3)
+	PKit.sleep(0.1)
 	PKit.clear()
 	-- state 4
 	print("\\")
-	PKit.sleep(0.3)
+	PKit.sleep(0.1)
 	PKit.clear()
 	i = i + 1
 end

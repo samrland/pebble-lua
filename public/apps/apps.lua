@@ -6,18 +6,16 @@ PKit.clear()
 PKit.ui.title("apps")
 
 -- parse PIF
-local toml = require("toml")
+Toml = require("toml")
 PIFinst = io.open("pebble.toml")
-_, PIF = pcall(toml.decode, PIFinst:read())
+_, PIF = pcall(Toml.decode, PIFinst:read("*a"))
 PIFinst:close()
 
 -- print all options
 for i, name in ipairs(PIF["Pebble"]["Apps"]["apps"]) do
-	-- print("[34m[" .. i .. "] [4m" .. name .. "[0m")
 	PKit.listitem(i, name)
 end
 -- Show exit option
--- print("[31m[" .. (#PIF["Pebble"]["Apps"]["apps"] + 1) .. "] [4mGo back[0m\n")
 PKit.listiteg(#PIF["Pebble"]["Apps"]["apps"] + 1, "Go back")
 
 -- get input
@@ -26,21 +24,29 @@ local opt = io.read("*n")
 -- check if option selected is in range
 if opt <= #PIF["Pebble"]["Apps"]["apps"] and opt > 0 then
 	-- clear console
-	os.execute("clear")
+	-- os.execute("clear")
 	-- check for option against app list
 	for i, name in ipairs(PIF["Pebble"]["Apps"]["apps"]) do
-		if PIF["Pebble"]["Apps"]["apps"][i] == opt then
-			os.execute("lua public/apps/" .. name .. "/init.lua")
+		if PIF["Pebble"]["Apps"]["apps"][i] == PIF["Pebble"]["Apps"]["apps"][opt] then
+			InitFileInst = io.open("public/apps/apps/" .. name .. "/init.toml")
+			_, SpecFile = pcall(Toml.decode, InitFileInst:read("*a"))
+			InitFileInst:close()
+
+			if SpecFile.specver == 2 then
+				os.execute("lua public/apps/apps/" .. name .. "/" .. SpecFile["Spec"].init)
+			else
+				PKit.printf(PKit.fg.red, "[X] This app does not support your version of pebble. Make sure you have the latest version. If you do, check with the developer of the application.")
+			end
 		end
 	end
 elseif opt == (#PIF["Pebble"]["Apps"]["apps"] + 1) then
 	-- exit app menu
-	os.execute("lua root/main/pebble.lua")
+	os.execute("lua root/main/home.lua")
 else
 	-- bad option
 	PKit.printf(PKit.fg.red, opt .. " is not a valid option.")
-	PKit.cont()
-	io.read("*l")
+	PKit.ui.cont()
+	io.read("l")
 	os.execute("lua public/apps/apps.lua")
 end
 

@@ -15,12 +15,12 @@ if (opt == 1) then
 	local newuname = io.read("*l")
 	unamefwrite:write(newuname)
 	unamefwrite:close()
-	os.execute("lua root/main/pebble.lua")
+	os.execute("lua root/main/home.lua")
 elseif (opt == 2) then
-	os.execute("lua root/main/pebble.lua")
+	os.execute("lua root/main/home.lua")
 else
 	print(opt .. " is not a valid option.")
 	print("continue]")
 	io.read("*l")
-	os.execute("lua root/main/pebble.lua")
+	os.execute("lua root/main/home.lua")
 end

@@ -1,0 +1,17 @@
+# App index for pebble
+
+# DO NOT CHANGE THE REVISION NUMBER YOURSELF.
+# Don't change the revision number on your own; I'll do that.
+revision = 1
+
+# Best apps
+# This is for apps that should be highlighted for some reason or another.
+# May include useful first-install packages.
+highlighted = [ "basicapp" ]
+
+# Available apps
+# Add your app here, along with the version number.
+[AvailableApps]
+
+basicapp = { description = "A simple basic app to test out getapp.", authorinfo = "samrland" }
+# basicappalias = { alias = "basicapp" }

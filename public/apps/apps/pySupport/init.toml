@@ -1,0 +1,10 @@
+specver = 2
+
+[AboutApp]
+name = "pySupport"
+author = { github = "samrland", email = "samr.stuff@pm.me" }
+
+[Spec]
+type = "luaapp"
+requirements = [ "init.lua" ]
+init = "init.lua"

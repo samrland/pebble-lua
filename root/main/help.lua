@@ -10,7 +10,7 @@ io.read("l")
 os.execute("clear")
 --[[
 -- parse root/documents/help.toml
-local toml = require("toml")
+toml = require("toml")
 
 HLPFinst = io.open("pebble.toml")
 HLPFsuccess, HLPF = pcall(toml.decode, HLPFinst:read())
@@ -75,4 +75,4 @@ print("Using this app, you can get support for your Python apps by just dragging
 print("Super simple!")
 print("[36m[continue][0m")
 io.read("*l")
-os.execute("lua root/main/pebble.lua")
+os.execute("lua root/main/home.lua")

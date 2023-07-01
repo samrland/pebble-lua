@@ -91,18 +91,20 @@ PKit.ui = {
 }
 
 -- formatted print function
-function PKit.printf(format, string)
+function PKit.printf(format, string, endline)
+    endline = endline or '\n'
+
     io.write(format)
     io.write(string)
     io.write(PKit.resetc)
-    io.write('\n')
+    io.write(endline)
 end
 
 -- check os function
 function PKit.getos()
     local pathsep = package.config:sub(1, 1)
     if pathsep == '/' then
-        return 'unix'
+        return 'posix'
     elseif pathsep == '\\' then
         return 'msdos'
     else
@@ -119,10 +121,30 @@ function PKit.clear()
     end
 end
 
+-- capture the output of a command
+function PKit.capture(cmd, raw)
+    local f = assert(io.popen(cmd, 'r'))
+    local s = assert(f:read('*a'))
+    f:close()
+    if raw then return s end
+    s = string.gsub(s, '^%s+', '')
+    s = string.gsub(s, '%s+$', '')
+    s = string.gsub(s, '[\n\r]+', ' ')
+    return s
+end
+
+-- get console information
+function PKit.console()
+    return {
+        columns = PKit.capture("tput cols", false);
+        rows = PKit.capture("tput lines", false);
+    }
+end
+
 -- home function
 function PKit.home()
     PKit.clear()
-    os.execute("lua root/main/pebble.lua")
+    os.execute("lua root/main/home.lua")
 end
 
 -- table container check function
@@ -133,6 +155,15 @@ function PKit.tablecontains(table, element)
         end
     end
     return false
+end
+
+-- find the index for a value in a table
+function PKit.indexOf(table, element)
+    for index, value in pairs(table) do
+        if value == element then
+            return index
+        end
+    end
 end
 
 -- sleep function

@@ -54,8 +54,8 @@ else
 	Fin = true
 end
 
-if (Fin) then
-	PKit.cont()
+if Fin then
+	PKit.ui.cont()
 	io.read("*l")
 	PKit.home()
 end

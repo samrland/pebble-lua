@@ -1,1 +1,1 @@
-os.execute("lua root/main/pebble.lua")
+os.execute("lua root/main/home.lua")
