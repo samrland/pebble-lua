@@ -18,7 +18,7 @@ AppIX = AppIXTable.index
 if AppIXTable.success then
 	print("Fetched revision " .. AppIX["revision"]) -- print app index revision number
 else
-	PKit.printf(PKit.fg.red, "Error! Could not fetch app index. Are you offline?")
+	PKit.printf(PKit.fg.red, "[X] Error! Could not fetch app index. Are you offline?")
 	PKit.ui.cont()
 	io.read()
 	PKit.home()
@@ -31,8 +31,12 @@ for _, name in ipairs(AppIX["highlighted"]) do
 end
 
 -- get option
-print("Type the name of the app you want to install: ")
+print("Type the name of the app you want to install (or '0' to exit): ")
 local name = io.read("*l")
+
+if name == "0" then
+	PKit.home()
+end
 
 local appinfotable = getappservice.getappinfo(repositoryurl, name)
 
@@ -56,47 +60,6 @@ if appinfotable.success then
 		goto finish
 	end -- otherwise, continue with installation
 
-	--[=[ setup
-	local outputdir = "public/apps/apps/" .. name -- os.execute('cd <...>') doesn't work here
-	os.execute("mkdir " .. outputdir)
-
-	-- curl init.toml and parse
-	os.execute("cd " .. outputdir .. "; curl '" .. repositoryurl .. "/" .. name .. "/init.toml' -s -O")
-	AppPathInst = io.open("public/apps/apps/" .. name .. "/init.toml")
-	_, SpecFile = pcall(Toml.decode, AppPathInst:read("*a"))
-	AppPathInst:close()
-
-	-- check specver
-	if SpecFile["specver"] == 2 then
-		-- curl files
-		for _, requirement in ipairs(SpecFile["Spec"].requirements) do
-			os.execute("cd " .. outputdir .. "; curl '" .. repositoryurl .. "/" .. name .. "/" .. requirement .. "' -s -O")
-		end
-
-		-- add to pebble.toml
-		PIFinst = io.open("pebble.toml", "r+")
-		_, PIF = pcall(Toml.decode, PIFinst:read("*a"))
-
-		PIF["Pebble"]["Apps"]["apps"][(#PIF["Pebble"]["Apps"]["apps"]) + 1] = name
-
-		_, TomlPIF = pcall(Toml.encode, PIF)
-		TomlPIF = [[
-# Pebble Information File
-# DO NOT DELETE. THIS FILE CONTAINS IMPORTANT INFORMATION.
-]]..TomlPIF..'\n'
-
-		PIFinst:write(TomlPIF)
-
-		PIFinst:close()
-
-		-- say done
-		PKit.ui.tipt("Done!")
-		goto finish
-	else
-		PKit.printf(PKit.fg.red, "[X] This app does not support your version of pebble. Make sure you have the latest version. If you do, check with the developer of the application.")
-		goto finish
-	end
-	]=]
 	local result = getappservice.installapp(repositoryurl, name)
 	if result == 0 then
 		PKit.ui.tipt("Done!")
